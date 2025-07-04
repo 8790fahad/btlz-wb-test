@@ -1,16 +1,17 @@
 # 🧩 Template for Completing the Test Task
 
-## 📄 Description
+## Description
 
 This template is designed to reduce the effort required to complete the test task.
 
 It includes pre-configured containers for `PostgreSQL` and a `Node.js` application.
-The app uses `knex.js` to interact with the database.
-The `app` container uses a build step for a TypeScript application, but JavaScript can also be used.
+The app interacts with the database using `knex.js`.
+The `app` container uses a `build` step for a TypeScript application, but JavaScript can also be used.
 
-> **Note:** This template is **not mandatory** — you can use it as-is or modify it to your preference.
+**This template is not mandatory!**
+You can use it as-is or modify it to your liking.
 
-Key configuration files:
+All settings can be found in the following files:
 
 * `compose.yaml`
 * `Dockerfile`
@@ -18,7 +19,6 @@ Key configuration files:
 * `tsconfig.json`
 * `src/config/env/env.ts`
 * `src/config/knex/knexfile.ts`
-
 ---
 
 ## 🔧 Environment Variables (`.env`)
@@ -60,44 +60,43 @@ GOOGLE_CREDENTIALS_JSON='{
 
 ---
 
-## 🚀 Commands
+## Commands:
 
-### Start the PostgreSQL database:
+Start the database:
 
 ```bash
 docker compose up -d --build postgres
 ```
 
-### Run migrations and seeds (outside the container):
+To run migrations and seeds outside the container:
 
 ```bash
 npm run knex:dev migrate latest
+```
+
+```bash
 npm run knex:dev seed run
 ```
 
-You can also use other Knex CLI commands such as:
+You can also use other Knex commands (`migrate make <name>`, `migrate up`, `migrate down`, etc.)
 
-```bash
-npm run knex:dev migrate:make <name>
-npm run knex:dev migrate:up
-npm run knex:dev migrate:down
-```
-
-### Start the application in development mode:
+To run the application in development mode:
 
 ```bash
 npm run dev
 ```
 
-### Run the app container for testing:
+Run the app container for testing:
 
 ```bash
 docker compose up -d --build app
 ```
 
-### Clean rebuild for final testing:
+For a clean final check, it is recommended to run:
 
 ```bash
 docker compose down --rmi local --volumes
 docker compose up --build
 ```
+
+

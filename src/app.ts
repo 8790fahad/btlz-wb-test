@@ -7,19 +7,11 @@ import fetchTariffs, { pushToSheets } from "#job/fetchTariffs.js";
 import { format } from "date-fns";
 import { DatePayload } from "#types.js";
 
-
 await migrate.latest();
 await seed.run();
 
 const app = express();
-app.use(express.json());
-// app.get('/health', (req, res) => {
-//     console.log(req)
-//   res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
-// });
-app.use(express.json());
 
-app.use(express.json());
 cron.schedule("0 * * * *", async () => {
     const date = format(new Date(), "yyyy-MM-dd");
     console.log(`[${new Date().toISOString()}] Hourly: Fetching WB tariffs for ${date}`);

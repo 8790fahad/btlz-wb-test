@@ -6,14 +6,17 @@ import env from "#config/env/env.js";
 import fetchTariffs, { pushToSheets } from "#job/fetchTariffs.js";
 import { format } from "date-fns";
 import { DatePayload } from "#types.js";
-import statusRouter from "#routes/status.js";
+
 
 await migrate.latest();
 await seed.run();
 
 const app = express();
 app.use(express.json());
-
+// app.get('/health', (req, res) => {
+//     console.log(req)
+//   res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
+// });
 app.use(express.json());
 
 app.use(express.json());

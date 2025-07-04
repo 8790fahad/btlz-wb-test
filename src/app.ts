@@ -16,9 +16,6 @@ app.use(express.json());
 
 app.use(express.json());
 
-// Health check route
-app.use(statusRouter)
-
 app.use(express.json());
 cron.schedule("0 * * * *", async () => {
     const date = format(new Date(), "yyyy-MM-dd");
